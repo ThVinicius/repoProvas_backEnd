@@ -14,6 +14,7 @@ export const errorHandling: ErrorRequestHandler = (error, req, res, next) => {
         return res.status(426).send(error.message)
 
       default:
+        console.log(error)
         return res.status(500).send(error)
     }
   }
@@ -29,6 +30,7 @@ export const errorHandling: ErrorRequestHandler = (error, req, res, next) => {
       return res.status(404).send(error.message)
 
     case 'P2002':
+    case 'Conflit':
       const message = 'Unique constraint failed on the fields:'
 
       return res.status(409).send(errorMessage(message, error.meta.target))

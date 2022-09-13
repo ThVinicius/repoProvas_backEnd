@@ -1,5 +1,6 @@
-import usersRepository from '../repositories/usersRepository'
 import bcrypt from 'bcrypt'
+import usersRepository from '../repositories/usersRepository'
+import { unauthorized } from '../utils/throwError'
 import { IUser } from '../types/userTypes'
 
 async function create(data: IUser) {
@@ -19,19 +20,17 @@ function bcryptPassword(password: string) {
 async function hanleSignIn(user: IUser) {
   const dbUser = await usersRepository.getByEmail(user.email)
 
-  if (dbUser === null)
-    throw { code: 'Unauthorized', message: 'Email ou password incorreto' }
+  if (dbUser === null) unauthorized('Email ou password incorreto')
 
-  validateBcrypt(user.password, dbUser.password)
+  validateBcrypt(user.password, dbUser!.password)
 
-  return dbUser
+  return dbUser!
 }
 
 function validateBcrypt(decrypted: string, encrypted: string) {
   const compare = bcrypt.compareSync(decrypted, encrypted)
 
-  if (!compare)
-    throw { code: 'Unauthorized', message: 'Email ou password incorreto' }
+  if (!compare) return unauthorized('Email ou password incorreto')
 }
 
 export default { create, hanleSignIn }

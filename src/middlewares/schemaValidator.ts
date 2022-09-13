@@ -1,10 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
 import { ObjectSchema } from 'joi'
 
-export default function schemaValidator(
-  schema: ObjectSchema,
-  isParams: boolean = false
-) {
+function schemaValidator(schema: ObjectSchema, isParams: boolean = false) {
   let payload
 
   return (req: Request, res: Response, next: NextFunction) => {
@@ -20,3 +17,5 @@ export default function schemaValidator(
     return next()
   }
 }
+
+export default schemaValidator

@@ -5,8 +5,16 @@ import usersController from '../controllers/usersController'
 
 const route = Router()
 
-route.post('/signup', schemaValidator(userSchemas.user), usersController.signUp)
+route.post(
+  '/signup',
+  schemaValidator(userSchemas.signUp),
+  usersController.signUp
+)
 
-route.post('/signin', schemaValidator(userSchemas.user), usersController.signIn)
+route.post(
+  '/signin',
+  schemaValidator(userSchemas.signIn),
+  usersController.signIn
+)
 
 export default route

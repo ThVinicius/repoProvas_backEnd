@@ -1,8 +1,14 @@
 import joi from 'joi'
 
-const user = joi.object({
+const signUp = joi.object({
   email: joi.string().email().required(),
-  password: joi.string().min(10).required()
+  password: joi.string().trim().min(3).required(),
+  confirmPassword: joi.valid(joi.ref('password')).required()
 })
 
-export default { user }
+const signIn = joi.object({
+  email: joi.string().email().required(),
+  password: joi.string().trim().min(3).required()
+})
+
+export default { signUp, signIn }

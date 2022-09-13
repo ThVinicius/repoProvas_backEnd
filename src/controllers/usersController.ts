@@ -1,9 +1,12 @@
 import { Request, Response } from 'express'
 import usersService from '../services/usersService'
+import { IUser } from '../types/userTypes'
 import sessionsService from '../services/sessionsService'
 
 async function signUp(req: Request, res: Response) {
-  await usersService.create(req.body)
+  const { email, password } = req.body as IUser
+
+  await usersService.create({ email, password })
 
   return res.sendStatus(201)
 }

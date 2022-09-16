@@ -15,5 +15,5 @@ export function conflit(message: string) {
 }
 
 export function upgradeRequired(message: string) {
-  throw { code: 'Upgrade Required', message }
+  throw { name: 'Upgrade Required', message }
 }

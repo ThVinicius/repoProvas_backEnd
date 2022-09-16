@@ -29,6 +29,16 @@ export const errorHandling: ErrorRequestHandler = (error, req, res, next) => {
     case 'Not Found':
       return res.status(404).send(error.message)
 
+    case 'P2003':
+      const field = error.meta.field_name.includes('categoryId')
+
+      let msg: string
+
+      if (field) msg = 'O categoryId passada não existe'
+      else msg = 'O teacherDisciplineId passada não existe'
+
+      return res.status(404).send(msg)
+
     case 'P2002':
     case 'Conflit':
       const message = 'Unique constraint failed on the fields:'

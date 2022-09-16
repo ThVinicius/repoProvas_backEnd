@@ -26,7 +26,7 @@ function getTests() {
 				      GROUP BY pe.id, d.id, c.id) tbt
 		      GROUP BY tbt."termId", tbt.number, tbt."disciplineId", tbt.discipline) tbd
   GROUP BY tbd."termId", tbd.number
-  ORDER BY "termId"`
+  ORDER BY "termId";`
 }
 
 export default { getTests }

@@ -9,4 +9,8 @@ function getByTeachers() {
   return testsRepository.getByTeachers()
 }
 
-export default { insert, getByTeachers }
+function getByDisciplines() {
+  return testsRepository.getByDisciplines()
+}
+
+export default { insert, getByTeachers, getByDisciplines }

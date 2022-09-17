@@ -11,7 +11,7 @@ afterAll(async () => {
 })
 
 describe('POST /signin', () => {
-  it('passando um email valido e uma senha incorreta', async () => {
+  it('passando um email válido e uma senha incorreta', async () => {
     const body = {
       email: 'vinicius@gmail.com',
       password: '13485487'
@@ -21,7 +21,7 @@ describe('POST /signin', () => {
     expect(result.status).toEqual(401)
   })
 
-  it('passando um email e senha validos', async () => {
+  it('passando um email e senha válidos', async () => {
     const body = {
       email: 'vinicius@gmail.com',
       password: '123',

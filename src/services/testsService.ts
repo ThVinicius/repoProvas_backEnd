@@ -5,4 +5,8 @@ function insert(test: ITest) {
   return testsRepository.insert(test)
 }
 
-export default { insert }
+function getByTeachers() {
+  return testsRepository.getByTeachers()
+}
+
+export default { insert, getByTeachers }

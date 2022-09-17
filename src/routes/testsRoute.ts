@@ -14,4 +14,6 @@ route.post(
   testsController.create
 )
 
+route.get('/tests/teachers', testsController.getTests)
+
 export default route

@@ -10,4 +10,10 @@ async function create(req: Request, res: Response) {
   return res.status(201).send(test)
 }
 
-export default { create }
+async function getTests(req: Request, res: Response) {
+  const tests = await testsService.getByTeachers()
+
+  return res.status(200).send(tests)
+}
+
+export default { create, getTests }

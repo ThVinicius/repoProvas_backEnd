@@ -145,7 +145,7 @@ describe('Testa um token inválido em todas as rotas', () => {
 })
 
 describe('Testa um token antigo em todas as rotas', () => {
-  it('GET /categories', async () => {
+  it('GET /categories', () => {
     const data = userFactory()
 
     supertest(app)
@@ -157,17 +157,18 @@ describe('Testa um token antigo em todas as rotas', () => {
         supertest(app)
           .post('/signin')
           .send(data)
-          .then(async () => {
-            const category = await supertest(app)
+          .then(() => {
+            supertest(app)
               .get('/categories')
               .set('Authorization', `Bearer ${token}`)
-
-            expect(category.status).toEqual(426)
+              .then(({ status }) => {
+                expect(status).toEqual(426)
+              })
           })
       })
   })
 
-  it('GET /teachersdisciplines', async () => {
+  it('GET /teachersdisciplines', () => {
     const data = userFactory()
 
     supertest(app)
@@ -179,17 +180,18 @@ describe('Testa um token antigo em todas as rotas', () => {
         supertest(app)
           .post('/signin')
           .send(data)
-          .then(async () => {
-            const teachersdisciplines = await supertest(app)
+          .then(() => {
+            supertest(app)
               .get('/teachersdisciplines')
               .set('Authorization', `Bearer ${token}`)
-
-            expect(teachersdisciplines.status).toEqual(426)
+              .then(({ status }) => {
+                expect(status).toEqual(426)
+              })
           })
       })
   })
 
-  it('POST /tests', async () => {
+  it('POST /tests', () => {
     const data = userFactory()
 
     supertest(app)
@@ -201,18 +203,19 @@ describe('Testa um token antigo em todas as rotas', () => {
         supertest(app)
           .post('/signin')
           .send(data)
-          .then(async () => {
-            const createTest = await supertest(app)
+          .then(() => {
+            supertest(app)
               .post('/tests')
               .set('Authorization', `Bearer ${token}`)
               .send(testFactory())
-
-            expect(createTest.status).toEqual(426)
+              .then(({ status }) => {
+                expect(status).toEqual(426)
+              })
           })
       })
   })
 
-  it('GET /tests/teachers', async () => {
+  it('GET /tests/teachers', () => {
     const data = userFactory()
 
     supertest(app)
@@ -224,17 +227,18 @@ describe('Testa um token antigo em todas as rotas', () => {
         supertest(app)
           .post('/signin')
           .send(data)
-          .then(async () => {
-            const relationTestsTeachers = await supertest(app)
+          .then(() => {
+            supertest(app)
               .get('/tests/teachers')
               .set('Authorization', `Bearer ${token}`)
-
-            expect(relationTestsTeachers.status).toEqual(426)
+              .then(({ status }) => {
+                expect(status).toEqual(426)
+              })
           })
       })
   })
 
-  it('GET /tests/disciplines', async () => {
+  it('GET /tests/disciplines', () => {
     const data = userFactory()
 
     supertest(app)
@@ -247,11 +251,12 @@ describe('Testa um token antigo em todas as rotas', () => {
           .post('/signin')
           .send(data)
           .then(async () => {
-            const relationTestsDisciplines = await supertest(app)
+            supertest(app)
               .get('/tests/disciplines')
               .set('Authorization', `Bearer ${token}`)
-
-            expect(relationTestsDisciplines.status).toEqual(426)
+              .then(({ status }) => {
+                expect(status).toEqual(426)
+              })
           })
       })
   })

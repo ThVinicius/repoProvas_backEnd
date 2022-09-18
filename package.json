@@ -10,7 +10,7 @@
     "start": "node ./dist/server.js",
     "seed": "prisma db seed",
     "seed-test":"dotenv -e .env.test prisma db seed",
-    "jest-test":"dotenv -e .env.test jest --no-cache -i",
+    "jest-test":"dotenv -e .env.test jest --runInBand --no-cache -i",
     "test": "npm run seed-test && npm run jest-test"
   },
   "prisma":{ "seed": "ts-node prisma/seed.ts" },

@@ -3,9 +3,17 @@ import testsService from '../services/testsService'
 import { ITest } from '../types/testTypes'
 
 async function create(req: Request, res: Response) {
-  const payload = req.body as ITest
+  let { name, categoryId, teacherDisciplineId } = req.body
 
-  const test = await testsService.insert(payload)
+  categoryId = Number(categoryId)
+
+  teacherDisciplineId = Number(teacherDisciplineId)
+
+  const pdfUrl = await testsService.pdfUrl(req.file)
+
+  const data = { name, categoryId, teacherDisciplineId, pdfUrl } as ITest
+
+  const test = await testsService.insert(data)
 
   return res.status(201).send(test)
 }

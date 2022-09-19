@@ -1,11 +1,8 @@
-import { createClient } from '@supabase/supabase-js'
 import testsRepository from '../repositories/testsRepositority'
+import supabaseConfig from '../utils/supabaseConfig'
 import { ITest } from '../types/testTypes'
 
-const supabaseUrl = process.env.SUPABASE_URL!
-const supabaseKey = process.env.SUPABASE_KEY!
-
-const supabase = createClient(supabaseUrl, supabaseKey)
+const supabase = supabaseConfig()
 
 function insert(test: ITest) {
   return testsRepository.insert(test)
@@ -22,7 +19,7 @@ function getByDisciplines() {
 async function pdfUrl(file: any) {
   await supabase.storage
     .from('pdf-tests')
-    .upload(file.originalname, file.buffer, {
+    .upload(Date.now() + file.originalname, file.buffer, {
       cacheControl: '3600',
       upsert: false,
       contentType: file.mimetype

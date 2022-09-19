@@ -102,21 +102,21 @@ token: // json web token
 
 ### Tests routes
 
-#### Send proof
+#### Send test
 
 ```http
 POST /tests
 ```
 
 <h3>Request:</h3>
-<h4>Body:</h4>
+<h4>Send via a multipart/form-data form</h4>
 
-| Params                | Type     | Description                                   |
-| :-------------------- | :------- | :-------------------------------------------- |
-| `name`                | `string` | **required**, **trim**                        |
-| `pdfUrl`              | `string` | **required**, **uri**                         |
-| `categoryId`          | `number` | **required**, **greater than 0**, **integer** |
-| `teacherDisciplineId` | `number` | **required**, **greater than 0**, **integer** |
+| Params                | Type              | Description                                   |
+| :-------------------- | :---------------- | :-------------------------------------------- |
+| `name`                | `string`          | **required**, **trim**                        |
+| `file`                | `application/pdf` | **required**                                  |
+| `categoryId`          | `number`          | **required**, **greater than 0**, **integer** |
+| `teacherDisciplineId` | `number`          | **required**, **greater than 0**, **integer** |
 
 <h4>Headers:</h4>
 Send the token (Bearer token)
@@ -143,7 +143,7 @@ Send the token (Bearer token)
 {
   "id": 14,
   "name": "2022 - globo.com",
-  "pdfUrl": "https://google.com",
+  "pdfUrl": "https://tpkkzyvybeoysawyhkyc.supabase.co/storage/v1/object/public/pdf-tests/test.pdf",
   "categoryId": 1,
   "teacherDisciplineId": 1,
   "createdAt": "2022-09-18T13:49:07.612Z"
@@ -638,6 +638,13 @@ To run this project, you will need to add the following environment variables to
 `PORT = number #recommended:5000`
 
 `JWT_SECRET = any string`
+
+`SUPABASE_URL = Project URL from supabase`
+`SUPABASE_KEY = service_role from supabase`
+
+[Supabase](https://supabase.com/)
+
+[guide to create a buckets in Supabase](https://supabase.com/docs/guides/storage)
 
 </br>
 

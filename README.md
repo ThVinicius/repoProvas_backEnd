@@ -1,6 +1,6 @@
 # projeto20-repoProvas
 
-Project developed using TypeScript for password management
+Project developed using TypeScript for tests management
 
 <p align="center">
   <img  src="https://desenrolaa.com.br/wp-content/uploads/2017/11/homework.png">
@@ -12,6 +12,7 @@ Project developed using TypeScript for password management
 
   <h3>Built With</h3>
 
+  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" height="30px"/>
   <img src="https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white" height="30px"/>
   <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" height="30px"/>
   <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" height="30px"/>  
@@ -25,16 +26,15 @@ Project developed using TypeScript for password management
 
 # Description
 
-RepoProvas is a system for sharing tests between students.
-In RepoProvas, anyone can search for old proofs of their disciplines and teachers or send old proofs
+RepoProvas is a system for sharing tests between students. In RepoProvas, anyone can search for old tests of their disciplines and teachers or send old tests
 
 </br>
 
 ## Features
 
 - Create accounts and access them
-- List of tests separated by subjects
-- List of tests separated by teachers
+- List the tests grouped by disciplines
+- List tests grouped by teachers
 - Register tests
 
 </br>
@@ -640,6 +640,7 @@ To run this project, you will need to add the following environment variables to
 `JWT_SECRET = any string`
 
 `SUPABASE_URL = Project URL from supabase`
+
 `SUPABASE_KEY = service_role from supabase`
 
 [Supabase](https://supabase.com/)

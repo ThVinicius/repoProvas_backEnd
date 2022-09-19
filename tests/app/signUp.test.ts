@@ -8,6 +8,8 @@ beforeEach(async () => {
 })
 
 afterAll(async () => {
+  await prisma.$executeRaw`TRUNCATE TABLE users CASCADE;`
+
   await prisma.$disconnect()
 })
 

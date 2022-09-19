@@ -15,6 +15,8 @@ beforeAll(async () => {
 beforeEach(async () => await prisma.$executeRaw`TRUNCATE TABLE tests CASCADE;`)
 
 afterAll(async () => {
+  await prisma.$executeRaw`TRUNCATE TABLE users CASCADE;`
+
   await prisma.$executeRaw`TRUNCATE TABLE tests CASCADE;`
 
   await prisma.$disconnect()

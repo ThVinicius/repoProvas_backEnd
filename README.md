@@ -671,7 +671,7 @@ Install dependencies
 Create database
 
 ```bash
-  npx prisma db push
+  npx prisma migrate dev
 ```
 
 Create seed

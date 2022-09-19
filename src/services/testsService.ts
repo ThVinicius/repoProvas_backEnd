@@ -17,17 +17,17 @@ function getByDisciplines() {
 }
 
 async function pdfUrl(file: any) {
-  await supabase.storage
-    .from('pdf-tests')
-    .upload(Date.now() + file.originalname, file.buffer, {
-      cacheControl: '3600',
-      upsert: false,
-      contentType: file.mimetype
-    })
+  const fileName = Date.now() + file.originalname
+
+  await supabase.storage.from('pdf-tests').upload(fileName, file.buffer, {
+    cacheControl: '3600',
+    upsert: false,
+    contentType: file.mimetype
+  })
 
   const { publicURL } = supabase.storage
     .from('pdf-tests')
-    .getPublicUrl(file.originalname)
+    .getPublicUrl(fileName)
 
   return publicURL
 }

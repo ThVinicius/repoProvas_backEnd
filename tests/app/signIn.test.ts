@@ -33,6 +33,6 @@ describe('POST /signin', () => {
     delete body.confirmPassword
 
     const result = await supertest(app).post('/signin').send(body)
-    expect(result.status).toEqual(201)
+    expect(result.status).toEqual(200)
   })
 })

@@ -54,10 +54,16 @@ describe('Testa um token válido em todas as rotas', () => {
 
     const token = result.body.token
 
+    const { name, categoryId, teacherDisciplineId } = testFactory()
+
     const createTest = await supertest(app)
       .post('/tests')
       .set('Authorization', `Bearer ${token}`)
-      .send(testFactory())
+      .set('Content-Type', 'multipart/form-data')
+      .field('name', name)
+      .field('categoryId', categoryId)
+      .field('teacherDisciplineId', teacherDisciplineId)
+      .attach('file', `${__dirname}/../factory/test.pdf`)
 
     expect(createTest.status).toEqual(201)
   })

@@ -22,7 +22,7 @@ afterAll(async () => {
 
 describe('POST /tests', () => {
   it('Criando test com dados válidos', async () => {
-    const data = testFactory()
+    const { name, categoryId, teacherDisciplineId } = testFactory()
 
     const user = userFactory()
 
@@ -33,16 +33,20 @@ describe('POST /tests', () => {
     const result = await supertest(app)
       .post('/tests')
       .set('Authorization', `Bearer ${token}`)
-      .send(data)
+      .set('Content-Type', 'multipart/form-data')
+      .field('name', name)
+      .field('categoryId', categoryId)
+      .field('teacherDisciplineId', teacherDisciplineId)
+      .attach('file', `${__dirname}/../factory/test.pdf`)
 
     expect(result.status).toEqual(201)
     expect(result.body).toHaveProperty('id')
   })
 
   it('Passando categoryId inexistente', async () => {
-    const data = testFactory()
+    let { name, categoryId, teacherDisciplineId } = testFactory()
 
-    data.categoryId = 999999999999999
+    categoryId = '999999999999999'
 
     const user = userFactory()
 
@@ -53,15 +57,19 @@ describe('POST /tests', () => {
     const result = await supertest(app)
       .post('/tests')
       .set('Authorization', `Bearer ${token}`)
-      .send(data)
+      .set('Content-Type', 'multipart/form-data')
+      .field('name', name)
+      .field('categoryId', categoryId)
+      .field('teacherDisciplineId', teacherDisciplineId)
+      .attach('file', `${__dirname}/../factory/test.pdf`)
 
     expect(result.status).toEqual(404)
   })
 
   it('Passando teacherDisciplineId inexistente', async () => {
-    const data = testFactory()
+    let { name, categoryId, teacherDisciplineId } = testFactory()
 
-    data.teacherDisciplineId = 999999999999
+    teacherDisciplineId = '999999999999999'
 
     const user = userFactory()
 
@@ -72,7 +80,11 @@ describe('POST /tests', () => {
     const result = await supertest(app)
       .post('/tests')
       .set('Authorization', `Bearer ${token}`)
-      .send(data)
+      .set('Content-Type', 'multipart/form-data')
+      .field('name', name)
+      .field('categoryId', categoryId)
+      .field('teacherDisciplineId', teacherDisciplineId)
+      .attach('file', `${__dirname}/../factory/test.pdf`)
 
     expect(result.status).toEqual(404)
   })

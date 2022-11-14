@@ -24,6 +24,16 @@ Project developed using TypeScript for tests management
 
 <br/>
 
+# Links
+
+[Front-end Repository](https://github.com/ThVinicius/repoProvas_frontEnd)
+
+[Deploy Front-end](http://repo-provas-front-end-lake.vercel.app/)
+
+[Deploy Back-end](https://th-repoprovas.herokuapp.com/)
+
+</br>
+
 # Description
 
 RepoProvas is a system for sharing tests between students. In RepoProvas, anyone can search for old tests of their disciplines and teachers or send old tests

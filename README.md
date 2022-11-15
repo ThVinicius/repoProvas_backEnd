@@ -694,7 +694,7 @@ Create seed
 Start the server
 
 ```bash
-  npm run start
+  npm run dev
 ```
 
 </br>

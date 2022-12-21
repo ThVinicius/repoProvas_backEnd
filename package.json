@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon ./src/server.ts",
     "prisma": "prisma studio",
-    "build": "prisma migrate deploy && prisma db seed && tsc",
+    "build": "./check-env.sh",
     "start": "node ./dist/src/server.js",
     "seed": "prisma db seed",
     "seed-test": "dotenv -e .env.test prisma db seed",
